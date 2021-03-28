@@ -1,6 +1,7 @@
 public class MainClass {
 
-    public int getLocalNumber(){
+
+    public int getLocalNumber() {
         return 14;
     }
 }

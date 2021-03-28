@@ -1,15 +1,14 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 public class MainClassTest {
-    MainClass Main =new MainClass();
-    int number = Main.getLocalNumber();
+    MainClass Main = new MainClass();
+    int local_number = Main.getLocalNumber();
 
     @Test
-    public void testGetLocalNumber(){
-    if (number == 14){
-        System.out.println("That`s OK");
-    } else {
-        System.out.println("The variable '" + number + "' is not equal to 14 translation");
+   public void testGetLocalNumber()
+    {
+        Assert.assertFalse("The 'local_number' variable != 14",local_number != 14);
     }
-    }
+
 }
