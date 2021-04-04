@@ -22,12 +22,6 @@ public class MainClassTest {
     @Test
     public void testGetClassString()
     {
-        boolean a = true;
-        if (class_string.contains("Hello") | class_string.contains("hello")){
-            a = true;
-        } else {
-            a = false;
-            }
-        Assert.assertTrue("There is no 'Hello' or ''hello' substring in the string",a == true);
+        Assert.assertTrue("There is no 'Hello' or ''hello' substring in the string", class_string.contains("Hello") || class_string.contains("hello"));
     }
 }
