@@ -1,4 +1,3 @@
-import com.gargoylesoftware.htmlunit.javascript.host.dom.Text;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
@@ -132,22 +131,6 @@ public class FirstTest {
             );
         }
 
-        @Test
-        public void testForElementHasText()
-        {
-            waitForElementAndClick(
-                    By.xpath("//*[contains(@text,'Search Wikipedia')]"),
-                    "Cannot find 'Search Wikipedia' input",
-                    3
-            );
-
-            assertElementHasText(
-                    By.id("org.wikipedia:id/search_src_text"),
-                    "Search…",
-                    "Cannot find the expected text 'value' in the search field",
-                    3
-            );
-        }
 
         private WebElement waitForElementPresent(By by, String error_message, long timeOutInSeconds)
         {
@@ -161,39 +144,32 @@ public class FirstTest {
             return waitForElementPresent(by, error_message, 2);
         }
 
-        private WebElement waitForElementAndClick(By by, String error_message, long timeOutInSeconds)
+        private WebElement waitForElementAndClick(By by, String error_message, long timeOutInSecond)
         {
             WebElement element = waitForElementPresent(by, error_message, 3);
             element.click();
             return element;
         }
 
-        private WebElement waitForElementAndSendKeys(By by, String value, String error_message, long timeOutInSeconds)
+        private WebElement waitForElementAndSendKeys(By by, String value, String error_message, long timeOutInSecond)
         {
             WebElement element = waitForElementPresent(by, error_message, 3);
             element.sendKeys(value);
             return element;
         }
 
-        private boolean waitForElementNotPresent(By by, String error_message, long timeOutSeconds)
+        private boolean waitForElementNotPresent(By by, String error_message, long timeOutSecond)
         {
-            WebDriverWait wait = new WebDriverWait(driver, timeOutSeconds);
+            WebDriverWait wait = new WebDriverWait(driver, timeOutSecond);
             wait.withMessage(error_message + "\n");
             return wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
         }
 
-        private WebElement waitForElementAndClear(By by, String error_message, long timeOutInSeconds)
+        private WebElement waitForElementAndClear(By by, String error_message, long timeOutInSecond)
         {
-            WebElement element = waitForElementPresent(by, error_message, timeOutInSeconds);
+            WebElement element = waitForElementPresent(by, error_message, timeOutInSecond);
             element.clear();
             return element;
-        }
-
-        private boolean assertElementHasText(By by, String expected_text, String error_message, long timeOutInSeconds)
-        {
-            WebDriverWait text = new WebDriverWait(driver, timeOutInSeconds);
-            text.withMessage(error_message + "\n");
-            return text.until(ExpectedConditions.textToBePresentInElementLocated(by, expected_text));
         }
 }
 
