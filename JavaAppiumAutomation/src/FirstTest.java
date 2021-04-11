@@ -149,6 +149,43 @@ public class FirstTest {
             );
         }
 
+        @Test
+        public void testSearchResultsAndClear()
+        {
+            waitForElementAndClick(
+                    By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                    "Cannot find 'Search Wikipedia' input",
+                    3
+            );
+            waitForElementAndSendKeys(
+                    By.xpath("//*[contains(@text,'Search…')]"),
+                    "Java",
+                    "Cannot find search input",
+                    3
+            );
+            waitForElementPresent(
+                    By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']"),
+                    "Cannot find any search result",
+                    10
+            );
+            waitForElementPresent(
+                    By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@index='1']"), // индексы элементов начинаются с 0, если необходимо проверить, что элементов несколько, то достаточно проверить лишь 2й элемент с индексом - 1
+                    "There is only one search result, not several",
+                    3
+            );
+            waitForElementAndClear(
+                    By.id("org.wikipedia:id/search_src_text"),
+                    "Cannot find search field",
+                    3
+            );
+            waitForElementNotPresent(
+                    By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']"),
+                    "Search results were not deleted",
+                    3
+            );
+        }
+
+
         private WebElement waitForElementPresent(By by, String error_message, long timeOutInSeconds)
         {
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
