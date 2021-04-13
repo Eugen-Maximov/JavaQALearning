@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FirstTest {
 
@@ -170,8 +172,7 @@ public class FirstTest {
             );
             waitForElementPresent(
                     By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@index='1']"), // индексы элементов начинаются с 0, если необходимо проверить, что элементов несколько, то достаточно проверить лишь 2й элемент с индексом - 1
-                    "There is only one search result, not several",
-                    3
+                    "There is only one search result, not several"
             );
             waitForElementAndClear(
                     By.id("org.wikipedia:id/search_src_text"),
@@ -185,6 +186,40 @@ public class FirstTest {
             );
         }
 
+        @Test
+        public void testSearchResults()
+        {
+            String search_word = "Java";
+
+            waitForElementAndClick(
+                    By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                    "Cannot find 'Search Wikipedia' input",
+                    3
+            );
+            waitForElementAndSendKeys(
+                    By.xpath("//*[contains(@text,'Search…')]"),
+                    search_word,
+                    "Cannot find search input",
+                    3
+            );
+            waitForElementPresent(
+                    By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']"),
+                    "Cannot find any search result",
+                    10
+            );
+
+            List<WebElement> search_elements = driver.findElements(By.id("org.wikipedia:id/page_list_item_title"));
+            for (WebElement s:search_elements){
+                String search_result = s.getText();
+                Assert.assertTrue(
+                        "There is a search result without a search value: " + search_result + ", ",
+                        search_result.contains(search_word)
+                );
+
+            }
+
+        }
+
 
         private WebElement waitForElementPresent(By by, String error_message, long timeOutInSeconds)
         {
@@ -195,7 +230,7 @@ public class FirstTest {
 
         private WebElement waitForElementPresent(By by, String error_message)
         {
-            return waitForElementPresent(by, error_message, 2);
+            return waitForElementPresent(by, error_message, 3);
         }
 
         private WebElement waitForElementAndClick(By by, String error_message, long timeOutInSeconds)
