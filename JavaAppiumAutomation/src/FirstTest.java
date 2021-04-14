@@ -30,7 +30,8 @@ public class FirstTest {
             capabilities.setCapability("automationName", "Appium");
             capabilities.setCapability("appPackage", "org.wikipedia");
             capabilities.setCapability("appActivity", ".main.MainActivity");
-            capabilities.setCapability("app", "C:\\Users\\Eugen\\Desktop\\JavaAppiumAutomation\\JavaAppiumAutomation\\apks\\org.wikipedia.apk");
+            capabilities.setCapability("app", "C:\\Users\\Eugen\\Desktop\\JavaAppiumAutomation\\JavaAppiumAutomation\\apks\\org.wikipedia.apk");//HomePC
+            //capabilities.setCapability("app","C:\\Users\\user1.DESKTOP-H3JEDUD\\Documents\\GitHub\\JavaQALearning\\JavaAppiumAutomation\\apks\\org.wikipedia.apk"); //WorkPC
 
             driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
         }
