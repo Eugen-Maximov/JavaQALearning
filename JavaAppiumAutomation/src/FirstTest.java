@@ -154,6 +154,8 @@ public class FirstTest {
         @Test
         public void testSearchResultsAndClear()
         {
+            String search_word = "Java";
+
             waitForElementAndClick(
                     By.xpath("//*[contains(@text,'Search Wikipedia')]"),
                     "Cannot find 'Search Wikipedia' input",
@@ -161,7 +163,7 @@ public class FirstTest {
             );
             waitForElementAndSendKeys(
                     By.xpath("//*[contains(@text,'Search…')]"),
-                    "Java",
+                    search_word,
                     "Cannot find search input",
                     3
             );
