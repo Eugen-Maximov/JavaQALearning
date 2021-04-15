@@ -149,13 +149,13 @@ public class FirstTest {
 
         waitForElementAndSendKeys(
                 By.xpath("//*[contains(@text,'Search…')]"),
-                "Java",
+                "Appium",
                 "Cannot find search input",
                 3
         );
         waitForElementAndClick(
-                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Object-oriented programming language']"),
-                "Cannot find 'Object-oriented programming language' topic search by 'Java'",
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_title'][@text='Appium']"),
+                "Cannot find 'Appium' topic search by 'Appium'",
                 5
         );
         waitForElementPresent(
@@ -163,11 +163,11 @@ public class FirstTest {
                 "Cannot find article title",
                 10
         );
-        swipeUp(2000);
-        swipeUp(2000);
-        swipeUp(2000);
-        swipeUp(2000);
-        swipeUp(2000);
+        swipeUpToFindElement(
+                By.xpath("//*[@text='View page in browser']"),
+                "Cannot find the end of the article",
+                20
+        );
     }
 
         @Test
@@ -314,6 +314,25 @@ public class FirstTest {
             int start_y = (int) (size.height * 0.8);
             int end_y = (int) (size.height * 0.2);
             action.press(x, start_y).waitAction(timeOFSwipe).moveTo(x, end_y).release().perform();
+        }
+
+        protected void swipeUpQuick()
+        {
+            swipeUp(200);
+        }
+
+        protected void swipeUpToFindElement(By by, String error_message, int max_swipes)
+        {
+            int already_swiped = 0;
+            while (driver.findElements(by).size() == 0){
+
+                if (already_swiped > max_swipes){
+                    waitForElementPresent(by, "Cannot find element by swiping up. \n" + error_message, 0);
+                    return;
+                }
+                swipeUpQuick();
+                ++already_swiped;
+            }
         }
 }
 
