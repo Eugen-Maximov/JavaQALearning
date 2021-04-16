@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class FirstTest {
 
@@ -33,8 +34,8 @@ public class FirstTest {
             capabilities.setCapability("automationName", "Appium");
             capabilities.setCapability("appPackage", "org.wikipedia");
             capabilities.setCapability("appActivity", ".main.MainActivity");
-            capabilities.setCapability("app", "C:\\Users\\Eugen\\Desktop\\JavaAppiumAutomation\\JavaAppiumAutomation\\apks\\org.wikipedia.apk");//HomePC
-            //capabilities.setCapability("app","C:\\Users\\user1.DESKTOP-H3JEDUD\\Documents\\GitHub\\JavaQALearning\\JavaAppiumAutomation\\apks\\org.wikipedia.apk"); //WorkPC
+            //capabilities.setCapability("app", "C:\\Users\\Eugen\\Desktop\\JavaAppiumAutomation\\JavaAppiumAutomation\\apks\\org.wikipedia.apk");//HomePC
+            capabilities.setCapability("app","C:\\Users\\user1.DESKTOP-H3JEDUD\\Documents\\GitHub\\JavaQALearning\\JavaAppiumAutomation\\apks\\org.wikipedia.apk"); //WorkPC
 
             driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
         }
@@ -258,6 +259,55 @@ public class FirstTest {
 
         }
 
+        @Test
+        public void saveFirstArticleToMyList()
+        {
+            waitForElementAndClick(
+                    By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                    "Cannot find 'Search Wikipedia' input",
+                    5
+            );
+
+            waitForElementAndSendKeys(
+                    By.xpath("//*[contains(@text,'Search…')]"),
+                    "Java",
+                    "Cannot find search input",
+                    5
+            );
+            waitForElementAndClick(
+                    By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Object-oriented programming language']"),
+                    "Cannot find 'Object-oriented programming language' topic search by 'Java'",
+                    10
+            );
+            /*waitForRender(
+                    By.xpath("//android.widget.ImageView"),
+                    "Not elements by android.widget.ImageView can be upload",
+                    10
+            );*/
+            waitForElementAndClick(
+                    By.xpath("//android.widget.ImageView[@content-desc='More options']"),
+                    "Cannot find 'More options' button",
+                    10
+            );
+            waitForRender(
+                    By.xpath("//android.widget.TextView"),
+                    "Not menu elements can be upload",
+                    10
+            );
+            waitRender(10);
+            waitForElementAndClick(
+                    By.xpath("//android.widget.TextView[@text='Add to reading list']"),
+                    "Cannot find 'Add to reading list' button",
+                    10
+            );
+            waitForElementAndClick(
+                    By.id("org.wikipedia:id/onboarding_button"),
+                    "Cannot find OK button",
+                    5
+            );
+
+        }
+
 
         private WebElement waitForElementPresent(By by, String error_message, long timeOutInSeconds)
         {
@@ -268,19 +318,19 @@ public class FirstTest {
 
         private WebElement waitForElementPresent(By by, String error_message)
         {
-            return waitForElementPresent(by, error_message, 3);
+            return waitForElementPresent(by, error_message, 5);
         }
 
         private WebElement waitForElementAndClick(By by, String error_message, long timeOutInSeconds)
         {
-            WebElement element = waitForElementPresent(by, error_message, 3);
+            WebElement element = waitForElementPresent(by, error_message, timeOutInSeconds);
             element.click();
             return element;
         }
 
         private WebElement waitForElementAndSendKeys(By by, String value, String error_message, long timeOutInSeconds)
         {
-            WebElement element = waitForElementPresent(by, error_message, 3);
+            WebElement element = waitForElementPresent(by, error_message, timeOutInSeconds);
             element.sendKeys(value);
             return element;
         }
@@ -333,6 +383,21 @@ public class FirstTest {
                 swipeUpQuick();
                 ++already_swiped;
             }
+        }
+
+        private void waitRender(long timeToSleep)
+        {
+            try {
+                TimeUnit.SECONDS.sleep(timeToSleep);
+            } catch (InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+
+        private void waitForRender(By by, String error_message, long timeOutInSeconds)
+        {
+            WebDriverWait element = new WebDriverWait(driver, timeOutInSeconds);
+            driver.manage().timeouts().implicitlyWait(timeOutInSeconds, TimeUnit.SECONDS);
         }
 }
 
