@@ -34,8 +34,8 @@ public class FirstTest {
             capabilities.setCapability("automationName", "Appium");
             capabilities.setCapability("appPackage", "org.wikipedia");
             capabilities.setCapability("appActivity", ".main.MainActivity");
-            //capabilities.setCapability("app", "C:\\Users\\Eugen\\Desktop\\JavaAppiumAutomation\\JavaAppiumAutomation\\apks\\org.wikipedia.apk");//HomePC
-            capabilities.setCapability("app","C:\\Users\\user1.DESKTOP-H3JEDUD\\Documents\\GitHub\\JavaQALearning\\JavaAppiumAutomation\\apks\\org.wikipedia.apk"); //WorkPC
+            capabilities.setCapability("app", "C:\\Users\\Eugen\\Desktop\\JavaAppiumAutomation\\JavaAppiumAutomation\\apks\\org.wikipedia.apk");//HomePC
+            //capabilities.setCapability("app","C:\\Users\\user1.DESKTOP-H3JEDUD\\Documents\\GitHub\\JavaQALearning\\JavaAppiumAutomation\\apks\\org.wikipedia.apk"); //WorkPC
 
             driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
         }
@@ -263,7 +263,7 @@ public class FirstTest {
         public void saveFirstArticleToMyList()
         {
             String list_name = "Learning programming";
-
+            /*
             waitForElementAndClick(
                     By.xpath("//*[contains(@text,'Search Wikipedia')]"),
                     "Cannot find 'Search Wikipedia' input",
@@ -352,19 +352,14 @@ public class FirstTest {
                     By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),
                     "Cannot find X button",
                     5
-            );
-            waitForRender(
-                    By.xpath("//android.widget.FrameLayout"),
-                    "Cannot render FrameLayout",
-                    15
-            );
+            );*/
             waitForElementAndClick(
                     By.xpath("//android.widget.FrameLayout[@content-desc='My lists']"),
                     "Cannot find My Lists button",
                     10
             );
             waitForElementAndClick(
-                    By.xpath("//*[@resource-id='org.wikipedia:id/item_title']//*[@text='" + list_name + "']"),
+                    By.xpath("//android.widget.FrameLayout//*[@text='" + list_name + "']"),
                     "Cannot find created list: " + list_name + ";",
                     10
             );
