@@ -384,6 +384,38 @@ public class FirstTest {
             );
         }
 
+        @Test
+        public void testAmountOfNotEmptySearch()
+        {
+            String search_line = "Linkin Park Discography";
+            String search_result_container = "//*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']";
+
+            waitForElementAndClick(
+                    By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                    "Cannot find 'Search Wikipedia' input",
+                    5
+            );
+            waitForElementAndSendKeys(
+                    By.xpath("//*[contains(@text,'Search…')]"),
+                    search_line,
+                    "Cannot find search input",
+                    5
+            );
+            waitForElementPresent(
+                    By.xpath(search_result_container),
+                    "Cannot find anything by the request " + search_line,
+                    15
+            );
+            int amount_of_search_results = getAmountOfElements(
+                    By.xpath(search_result_container)
+            );
+            Assert.assertTrue(
+                    "We found too few results",
+                    amount_of_search_results > 0
+            );
+
+        }
+
 
         private WebElement waitForElementPresent(By by, String error_message, long timeOutInSeconds)
         {
@@ -490,6 +522,12 @@ public class FirstTest {
                     .release()
                     .perform();
 
+        }
+
+        private int getAmountOfElements(By by)
+        {
+            List elements = driver.findElements(by);
+            return elements.size();
         }
 }
 
