@@ -263,7 +263,7 @@ public class FirstTest {
         public void saveFirstArticleToMyList()
         {
             String list_name = "Learning programming";
-            /*
+
             waitForElementAndClick(
                     By.xpath("//*[contains(@text,'Search Wikipedia')]"),
                     "Cannot find 'Search Wikipedia' input",
@@ -352,14 +352,19 @@ public class FirstTest {
                     By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),
                     "Cannot find X button",
                     5
-            );*/
-            waitForElementAndClick(
-                    By.xpath("//android.widget.FrameLayout[@content-desc='My lists']"),
-                    "Cannot find My Lists button",
+            );
+            waitForRender(
+                    By.id("org.wikipedia:id/fragment_main_nav_tab_layout"),
+                    "Cannot render navigation bar",
                     10
             );
             waitForElementAndClick(
-                    By.xpath("//android.widget.FrameLayout//*[@text='" + list_name + "']"),
+                    By.xpath("//android.widget.FrameLayout[@content-desc='My lists']"),
+                    "Cannot find My Lists navigation button",
+                    10
+            );
+            waitForElementAndClick(
+                    By.xpath("//*[@resource-id='org.wikipedia:id/item_container']//*[@text='" + list_name + "']"),
                     "Cannot find created list: " + list_name + ";",
                     10
             );
