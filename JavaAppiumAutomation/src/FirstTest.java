@@ -416,6 +416,35 @@ public class FirstTest {
 
         }
 
+        @Test
+        public void testAmountOfEmptySearch()
+        {
+            String search_element = "aodkakdakdasd";
+            String search_result_locator = "//*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']";
+            String empty_result_label = "//*[@text='No results found']";
+
+            waitForElementAndClick(
+                    By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                    "Cannot find 'Search Wikipedia' input",
+                    5
+            );
+            waitForElementAndSendKeys(
+                    By.xpath("//*[contains(@text,'Search…')]"),
+                    search_element,
+                    "Cannot find search input",
+                    5
+            );
+            waitForElementPresent(
+                    By.xpath(empty_result_label),
+                    "Cannot find empty result label by the request: " +search_element,
+                    15
+            );
+            assertElementNotPresent(
+                    By.xpath(search_result_locator),
+                    "We`ve found some results by request " + search_element
+            );
+        }
+
 
         private WebElement waitForElementPresent(By by, String error_message, long timeOutInSeconds)
         {
@@ -528,6 +557,15 @@ public class FirstTest {
         {
             List elements = driver.findElements(by);
             return elements.size();
+        }
+
+        private void assertElementNotPresent(By by, String error_message)
+        {
+            int amount_of_elements = getAmountOfElements(by);
+            if (amount_of_elements > 0){
+                String default_message = "An element '" + by.toString() + "' supposed to be not present";
+                throw new AssertionError(default_message + " " + error_message);
+            }
         }
 }
 
