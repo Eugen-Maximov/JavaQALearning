@@ -531,6 +531,200 @@ public class FirstTest {
 
         }
 
+        @Test
+        public void testSaveTwoArticlesAndDeleteOne()
+        {
+            String search_line = "Java";
+            String folder_name = "Saved articles";
+            String search_first_result_locator = "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Island of Indonesia']";
+            String search_second_result_locator = "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Object-oriented programming language']";
+            String folder_first_article_locator = "//*[@resource-id='org.wikipedia:id/page_list_item_description']//*[@text='island of Indonesia']";
+            String folder_second_article_lokator = "//*[@resource-id='org.wikipedia:id/page_list_item_description']//*[@text='object-oriented programming language']";
+
+            //add first article
+            waitForElementAndClick(
+                    By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                    "Cannot find 'Search Wikipedia' input",
+                    5
+            );
+
+            waitForElementAndSendKeys(
+                    By.xpath("//*[contains(@text,'Search…')]"),
+                    search_line,
+                    "Cannot find search input",
+                    5
+            );
+            waitForElementAndClick(
+                    By.xpath(search_first_result_locator),
+                    "Cannot find first article by search '" + search_line + "';",
+                    15
+            );
+            waitForRender(
+                    By.xpath("//android.widget.ImageView[@content-desc='More options']"),
+                    "Not elements by android.widget.ImageView can be upload",
+                    15
+            );
+            waitForElementAndClick(
+                    By.xpath("//android.widget.ImageView[@content-desc='More options']"),
+                    "Cannot find 'More options' button",
+                    5
+            );
+            waitForRender(
+                    By.xpath("//android.widget.TextView"),
+                    "Not menu elements can be upload",
+                    15
+            );
+            waitForElementAndClick(
+                    By.xpath("//android.widget.TextView[@text='Add to reading list']"),
+                    "Cannot find 'Add to reading list' button",
+                    5
+            );
+            waitForElementAndClick(
+                    By.id("org.wikipedia:id/onboarding_button"),
+                    "Cannot find GOT IT button",
+                    10
+            );
+            waitForRender(
+                    By.id("org.wikipedia:id/text_input"),
+                    "Cannot render input field",
+                    10
+            );
+            waitForElementAndClear(
+                    By.id("org.wikipedia:id/text_input"),
+                    "Cannot find input field",
+                    5
+            );
+            waitForElementAndSendKeys(
+                    By.xpath("//android.widget.EditText[@resource-id='org.wikipedia:id/text_input']"),
+                    folder_name,
+                    "Cannot find input field and send Keys",
+                    5
+            );
+            waitForElementAndClick(
+                    By.xpath("//android.widget.Button[@text='OK']"),
+                    "Cannot find Ok button to send the name of list",
+                    5
+            );
+            waitForElementAndClick(
+                    By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),
+                    "Cannot find X button",
+                    5
+            );
+
+            //add second article
+
+            waitForElementAndClick(
+                    By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                    "Cannot find 'Search Wikipedia' input",
+                    5
+            );
+            waitForElementAndSendKeys(
+                    By.xpath("//*[contains(@text,'Search…')]"),
+                    search_line,
+                    "Cannot find search input",
+                    5
+            );
+            waitForElementAndClick(
+                    By.xpath(search_second_result_locator),
+                    "Cannot find second article by search '" + search_line + "';",
+                    15
+            );
+            waitForRender(
+                    By.xpath("//android.widget.ImageView[@content-desc='More options']"),
+                    "Not elements by More Options menu can be upload",
+                    15
+            );
+            waitForElementAndClick(
+                    By.xpath("//android.widget.ImageView[@content-desc='More options']"),
+                    "Cannot find 'More options' button",
+                    5
+            );
+            waitForRender(
+                    By.xpath("//android.widget.TextView"),
+                    "Not menu elements can be upload",
+                    15
+            );
+            waitForElementAndClick(
+                    By.xpath("//android.widget.TextView[@text='Add to reading list']"),
+                    "Cannot find 'Add to reading list' button",
+                    5
+            );
+            waitForElementAndClick(
+                    By.xpath("//android.widget.LinearLayout//*[@text='" + folder_name + "']"),
+                    "Cannot find reading list: " + folder_name,
+                    5
+            );
+            waitForElementAndClick(
+                    By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']"),
+                    "Cannot find X button",
+                    5
+            );
+
+            // go to folder + delete first article
+
+            waitForElementAndClick(
+                    By.xpath("//android.widget.FrameLayout[@content-desc='My lists']"),
+                    "Cannot find My Lists navigation button",
+                    10
+            );
+            waitForRender(
+                    By.id("org.wikipedia:id/item_container"),
+                    "Cannot render My List`s folders",
+                    10
+            );
+            waitForElementAndClick(
+                    By.xpath("//*[@text='" + folder_name + "']"),
+                    "Cannot find created list: " + folder_name + ";",
+                    10
+            );
+
+            waitForElementPresent(
+                    By.xpath("//*[@text='island of Indonesia']"),
+                    "Cannot find first added article in list" + folder_name,
+                    5
+            );
+            waitForElementPresent(
+                    By.xpath("//*[@text='object-oriented programming language']"),
+                    "Cannot find second added article in list" + folder_name,
+                    5
+            );
+            swipeElementToLeft(
+                    By.xpath("//*[@text='island of Indonesia']"),
+                    "Cannot find and swipe first article"
+            );
+            waitForElementNotPresent(
+                    By.xpath("//*[@text='island of Indonesia']"),
+                    "The first article was not deleted from " + folder_name,
+                    5
+            );
+
+            // final check of titles
+
+            String title_from_list = waitForElementAndGetAttribute(
+                    By.xpath("//*[@text='Java (programming language)']"),
+                    "text",
+                    "Cannot find title of article in " + folder_name + " list;",
+                    5
+            );
+            waitForElementAndClick(
+                    By.xpath("//*[@text='Java (programming language)']"),
+                    "Cannot find title of article in " + folder_name + " list;",
+                    5
+            );
+            String title_from_article_page = waitForElementAndGetAttribute(
+                    By.id("org.wikipedia:id/view_page_title_text"),
+                    "text",
+                    "Cannot find title from page Java (programming language)",
+                    10
+            );
+            Assert.assertEquals(
+                    "The titles of the articles from My Lists and the Opened article are different",
+                    title_from_article_page,
+                    title_from_list
+            );
+
+        }
+
 
         /*----------------------------------------------------FUNCTIONS-----------------------------------------------------------------------------------*/
 
