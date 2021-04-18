@@ -725,6 +725,35 @@ public class FirstTest {
 
         }
 
+        @Test
+        public void testFailAssertElementPresent()
+        {
+            String search_line = "Java";
+
+            waitForElementAndClick(
+                    By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                    "Cannot find 'Search Wikipedia' input",
+                    5
+            );
+
+            waitForElementAndSendKeys(
+                    By.xpath("//*[contains(@text,'Search…')]"),
+                    search_line,
+                    "Cannot find search input",
+                    5
+            );
+            waitForElementPresent(
+                    By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Object-oriented programming language']"),
+                    "Cannot find 'Object-oriented programming language' topic search by 'Java'",
+                    15
+            );
+            assertElementPresent(
+                    By.id("org.wikipedia:id/view_page_title_text"),
+                    "text",
+                    "Cannot find title in article"
+            );
+        }
+
 
         /*----------------------------------------------------FUNCTIONS-----------------------------------------------------------------------------------*/
 
@@ -849,10 +878,24 @@ public class FirstTest {
                 throw new AssertionError(default_message + " " + error_message);
             }
         }
+
         private String waitForElementAndGetAttribute(By by, String attribute, String error_message, long timeOutInSeconds)
         {
             WebElement element = waitForElementPresent(by, error_message, timeOutInSeconds);
             return element.getAttribute(attribute);
+        }
+
+        private void assertElementPresent(By by, String attribute, String error_message)
+        {
+            WebElement element = driver.findElement(by);
+            //WebElement element = waitForElementPresent(by, error_message, 0);
+            String title = element.getAttribute(attribute);
+
+            /*
+            WebElement element = driver.findElement(by); - отрабатывает как надо, но падает с системной ошибкой от аппиума
+            WebElement element = waitForElementPresent(by, error_message, 0); - костыль, когда функция ожидания элемента ждет его 0 сек. За то ошибка красивая выводится
+            Мне больше нравится 1й вариант, тем более IntelliJIDEA - подчеркивает те функции, на которых тест упал, ну и ошибка вполне понятна
+            */
         }
 }
 
