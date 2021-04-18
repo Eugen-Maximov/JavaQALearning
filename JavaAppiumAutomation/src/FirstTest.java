@@ -40,6 +40,7 @@ public class FirstTest {
             //capabilities.setCapability("app","C:\\Users\\user1.DESKTOP-H3JEDUD\\Documents\\GitHub\\JavaQALearning\\JavaAppiumAutomation\\apks\\org.wikipedia.apk"); //WorkPC
 
             driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
+            driver.rotate(ScreenOrientation.PORTRAIT); // вроде как самый простой вариант вернуть приложение в режим портрета
         }
         @After
         public void tearDown()
