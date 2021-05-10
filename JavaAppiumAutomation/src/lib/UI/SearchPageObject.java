@@ -28,7 +28,7 @@ public class SearchPageObject extends MainPageObject{
     public void initSearchInput()
     {
         this.waitForElementAndClick(By.xpath(SEARCH_INIT_ELEMENT), "Cannot find and click search init element", 5);
-        this.waitForElementPresent(By.xpath(SEARCH_INIT_ELEMENT), "Cannot find search input after clicking search init element");
+        this.waitForElementPresent(By.xpath(SEARCH_INPUT), "Cannot find search input after clicking search init element");
     }
 
     public void typeSearchLine(String search_line)
@@ -52,6 +52,11 @@ public class SearchPageObject extends MainPageObject{
     {
         this.waitForElementNotPresent(By.id(SEARCH_CANCEL_BUTTON), "Search button is still present", 5);
 
+    }
+
+    public void waitForArticleIsDisappear()
+    {
+        this.waitForElementNotPresent(By.xpath(SEARCH_RESULT_ELEMENT), "Search results are on the page", 10);
     }
 
     public void clickCancelSearch()
@@ -86,6 +91,11 @@ public class SearchPageObject extends MainPageObject{
     public void  waitForSearchResult(String substring)
     {
         String search_result_xpath = getResultSearchElement(substring);
-        this.waitForElementPresent(By.xpath(search_result_xpath), "Cannot find and click search result with substring" + substring, 10);
+        this.waitForElementPresent(By.xpath(search_result_xpath), "Cannot find any search result with substring" + substring, 10);
+    }
+
+    public void waitForAnySearchResult()
+    {
+        this.waitForElementPresent(By.xpath(SEARCH_RESULT_ELEMENT), "There isn`t any search result", 10);
     }
 }

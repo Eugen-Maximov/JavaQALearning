@@ -39,7 +39,7 @@ public class ArticlePageObject extends MainPageObject
             this.swipeUpToFindElement(By.xpath(FOOTER_ELEMENT), "Cannot find the end of the article", 20);
         }
 
-        public void addArticleToMyList(String name_of_folder)
+        public void addFirstArticleToMyList(String name_of_folder)
         {
             this.waitForRender(
                     By.xpath("//android.widget.FrameLayout"),
@@ -105,8 +105,52 @@ public class ArticlePageObject extends MainPageObject
             );
         }
 
+        public void addSecondArticleToList(String list_name)
+        {
+            this.waitForRender(
+                    By.xpath("//android.widget.FrameLayout"),
+                    "Cannot render this page",
+                    30
+            );
+            this.swipeUp(2000);
+            this.waitForRender(
+                    By.xpath(OPTIONS_BUTTON),
+                    "Not elements by android.widget.ImageView can be upload",
+                    15
+            );
+            this.waitForElementAndClick(
+                    By.xpath(OPTIONS_BUTTON),
+                    "Cannot find 'More options' button",
+                    15
+            );
+            this.waitForRender(
+                    By.xpath("//android.widget.TextView"),
+                    "Not menu elements can be upload",
+                    15
+            );
+            this.waitForElementAndClick(
+                    By.xpath(OPTION_ADD_TO_MY_LIST_BUTTON),
+                    "Cannot find 'Add to reading list' button",
+                    5
+            );
+            this.waitForElementAndClick(
+                    By.xpath("//android.widget.LinearLayout//*[@text='" + list_name + "']"),
+                    "Cannot find reading list: " + list_name,
+                    15
+            );
+        }
+
         public void closeArticle()
         {
             this.waitForElementAndClick(By.xpath(CLOSE_BUTTON), "Cannot find close article title", 10);
+        }
+
+        public void assertArticle()
+        {
+            this.assertElementPresent(
+                    By.id("org.wikipedia:id/view_page_title_text"),
+                    "text",
+                    "Cannot find title in article"
+            );
         }
 }

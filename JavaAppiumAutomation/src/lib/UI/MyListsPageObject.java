@@ -3,6 +3,8 @@ package lib.UI;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
+
+
 public class MyListsPageObject extends MainPageObject {
     public MyListsPageObject(AppiumDriver driver) {
         super(driver);
@@ -33,7 +35,6 @@ public class MyListsPageObject extends MainPageObject {
         );
     }
 
-
     public void swipeByArticleToDelete(String article_title)
     {
         this.waitArticleToAppearByTitle(article_title);
@@ -57,10 +58,29 @@ public class MyListsPageObject extends MainPageObject {
 
     public void waitArticleToAppearByTitle(String article_title)
     {
-        String search_result_container = "//*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']";
-
         String article_title_xpath = getSavedArticleXpathByTPL(article_title);
         this.waitForElementPresent(
+                By.xpath(article_title_xpath),
+                "Cannot find saved article by title " + article_title,
+                15
+        );
+    }
+
+    public String getSavedArticleTitle(String article_title)
+    {
+        String article_title_xpath = getSavedArticleXpathByTPL(article_title);
+        return this.waitForElementPresent(
+                By.xpath(article_title_xpath),
+                "Cannot find saved article by title " + article_title,
+                15
+        ).getText();
+    }
+
+
+    public void openSavedArticle(String article_title)
+    {
+        String article_title_xpath = getSavedArticleXpathByTPL(article_title);
+        this.waitForElementAndClick(
                 By.xpath(article_title_xpath),
                 "Cannot find saved article by title " + article_title,
                 15
