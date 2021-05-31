@@ -10,8 +10,8 @@ import org.junit.Test;
 public class MyListsTests extends CoreTestCase
 {
     public static final String list_name = "Learning programming";
-    public static final String login = "QQJamm";
-    public static final String password = "1234567890";
+    public static final String login = "Euv1 QA";
+    public static final String password = "+N7%@wtjjSwx3Ca";
 
     @Test
     public void testSaveFirstArticleToMyList() {
@@ -61,8 +61,8 @@ public class MyListsTests extends CoreTestCase
     {
         String search_line = "Java";
         String folder_name = "Saved articles";
-        String first_article_title = "Programming language";
-        String second_article_title = "Object-oriented programming language";
+        String first_article_title = "rogramming language";
+        String second_article_title = "bject-oriented programming language";
 
         //add first article
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -70,23 +70,57 @@ public class MyListsTests extends CoreTestCase
         SearchPageObject.typeSearchLine(search_line);
         SearchPageObject.clickByArticleWithSubstring(first_article_title);
         ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
-        ArticlePageObject.addFirstArticleToMyList(folder_name);
-        ArticlePageObject.closeArticle();
+        ArticlePageObject.waitForTitleElement();
+        String article_title = ArticlePageObject.getArticleTitle();
+        if (Platform.getInstance().isAndroid()){
+            ArticlePageObject.addFirstArticleToMyList(list_name);
+        } else {
+            ArticlePageObject.addArticleToMySaved();
+        }
+        if (Platform.getInstance().isMW()){
+            AuthorizationPageObject Auth = new AuthorizationPageObject(driver);
+            Auth.clickAuthButton();
+            Auth.enterLoginData(login, password);
+            Auth.submitForm();
+            ArticlePageObject.waitForTitleElement();
+            assertEquals("We are not this page after login", article_title, ArticlePageObject.getArticleTitle());
+            ArticlePageObject.addArticleToMySaved();
+        } else {
+            ArticlePageObject.closeArticle();
+        }
+
 
         //add second article
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine(search_line);
         SearchPageObject.clickByArticleWithSubstring(second_article_title);
-        ArticlePageObject.addSecondArticleToList(folder_name);
-        ArticlePageObject.closeArticle();
+        if (Platform.getInstance().isAndroid()){
+            ArticlePageObject.addFirstArticleToMyList(list_name);
+        } else {
+            ArticlePageObject.addArticleToMySaved();
+        }
+        if (Platform.getInstance().isMW()){
+            AuthorizationPageObject Auth = new AuthorizationPageObject(driver);
+            Auth.clickAuthButton();
+            Auth.enterLoginData(login, password);
+            Auth.submitForm();
+            ArticlePageObject.waitForTitleElement();
+            assertEquals("We are not on same page after login", article_title, ArticlePageObject.getArticleTitle());
+            ArticlePageObject.addArticleToMySaved();
+        } else {
+            ArticlePageObject.closeArticle();
+        }
+
 
         // go to folder + delete first article
         NavigationUI NavigationUI = new NavigationUI(driver);
         NavigationUI.clickMyLists();
         MyListsPageObject MyListsPageObject = new MyListsPageObject(driver);
-        MyListsPageObject.openFolderByName(folder_name);
+        if (Platform.getInstance().isAndroid()){
+            MyListsPageObject.openFolderByName(folder_name);
+        }
         MyListsPageObject.swipeByArticleToDelete(first_article_title);
-        MyListsPageObject.waitArticleToAppearByTitle(first_article_title);
+        MyListsPageObject.waitArticleToDisappearByTitle(first_article_title);
 
         // final check of titles
         String title_from_list = MyListsPageObject.getSavedArticleTitle(second_article_title);
