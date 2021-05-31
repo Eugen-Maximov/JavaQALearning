@@ -14,8 +14,8 @@ import java.util.Map;
 
 public class Platform {
     private static final String
-            PLATFORM_IOS = "lib/UI/iOS",
-            PLATFORM_ANDROID = "Android",
+            PLATFORM_IOS = "ios",
+            PLATFORM_ANDROID = "android",
             PLATFORM_MOBILE_WEB = "mobile_web";
     private static String APPIUM_URL = "http://localhost:4723/wd/hub";
 
@@ -57,12 +57,12 @@ public class Platform {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName", "AndroidTestDevice");
-        capabilities.setCapability("platformVersion", "10");
+        capabilities.setCapability("platformVersion", "11");
         capabilities.setCapability("automationName", "Appium");
         capabilities.setCapability("appPackage", "org.wikipedia");
         capabilities.setCapability("appActivity", ".main.MainActivity");
-        capabilities.setCapability("app", "C:\\Users\\Eugen\\Desktop\\JavaAppiumAutomation\\JavaAppiumAutomation\\apks\\org.wikipedia.apk");//HomePC
-        //capabilities.setCapability("app","C:\\Users\\user1.DESKTOP-H3JEDUD\\Documents\\GitHub\\JavaQALearning\\JavaAppiumAutomation\\apks\\org.wikipedia.apk"); //WorkPC
+        //capabilities.setCapability("app", "C:\\Users\\Eugen\\Desktop\\JavaAppiumAutomation\\JavaAppiumAutomation\\apks\\org.wikipedia.apk");//HomePC
+        capabilities.setCapability("app","C:\\Users\\Eugen\\Documents\\GitHub\\JavaQALearning\\JavaAppiumAutomation\\apks\\org.wikipedia.apk"); //WorkPC
         return capabilities;
     }
 

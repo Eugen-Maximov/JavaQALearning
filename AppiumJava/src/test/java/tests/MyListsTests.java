@@ -38,7 +38,7 @@ public class MyListsTests extends CoreTestCase
 
             ArticlePageObject.waitForTitleElement();
 
-            assertEquals("We are not this page after login", article_title, ArticlePageObject.getArticleTitle());
+            Assert.assertEquals("We are not this page after login", article_title, ArticlePageObject.getArticleTitle());
 
             ArticlePageObject.addArticleToMySaved();
         }
@@ -83,7 +83,7 @@ public class MyListsTests extends CoreTestCase
             Auth.enterLoginData(login, password);
             Auth.submitForm();
             ArticlePageObject.waitForTitleElement();
-            assertEquals("We are not this page after login", article_title, ArticlePageObject.getArticleTitle());
+            Assert.assertEquals("We are not this page after login", article_title, ArticlePageObject.getArticleTitle());
             ArticlePageObject.addArticleToMySaved();
         } else {
             ArticlePageObject.closeArticle();
@@ -105,7 +105,7 @@ public class MyListsTests extends CoreTestCase
             Auth.enterLoginData(login, password);
             Auth.submitForm();
             ArticlePageObject.waitForTitleElement();
-            assertEquals("We are not on same page after login", article_title, ArticlePageObject.getArticleTitle());
+            Assert.assertEquals("We are not on same page after login", article_title, ArticlePageObject.getArticleTitle());
             ArticlePageObject.addArticleToMySaved();
         } else {
             ArticlePageObject.closeArticle();
@@ -126,7 +126,7 @@ public class MyListsTests extends CoreTestCase
         String title_from_list = MyListsPageObject.getSavedArticleTitle(second_article_title);
         MyListsPageObject.openSavedArticle(second_article_title);
         String title_from_article = ArticlePageObject.getArticleTitle();
-        assertEquals(
+        Assert.assertEquals(
                 "The titles of the articles from My Lists and the Opened article are different",
                 title_from_article,
                 title_from_list

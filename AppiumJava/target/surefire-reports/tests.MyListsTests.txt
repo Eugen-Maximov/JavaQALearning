@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: tests.MyListsTests
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in tests.MyListsTests
+testSaveTwoArticlesAndDeleteOne(tests.MyListsTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testSaveTwoArticlesAndDeleteOne(tests.MyListsTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testSaveFirstArticleToMyList(tests.MyListsTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testSaveFirstArticleToMyList(tests.MyListsTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+

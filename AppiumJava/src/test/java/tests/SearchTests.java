@@ -3,6 +3,7 @@ package tests;
 import lib.CoreTestCase;
 import lib.UI.SearchPageObject;
 import lib.UI.factories.SearchPageObjectFactory;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -40,7 +41,7 @@ public class SearchTests extends CoreTestCase
         SearchPageObject.typeSearchLine(search_line);
         int amount_of_search_results = SearchPageObject.getAmountOfFoundArticles();
 
-        assertTrue(
+        Assert.assertTrue(
                 "We found too few results",
                 amount_of_search_results > 0
         );
@@ -88,7 +89,7 @@ public class SearchTests extends CoreTestCase
         List<WebElement> search_elements = driver.findElements(By.id("org.wikipedia:id/page_list_item_title"));
         for (WebElement s:search_elements){
             String search_result = s.getText();
-            assertTrue(
+            Assert.assertTrue(
                     "There is a search result without a search value: " + search_result + ", ",
                     search_result.contains(search_word)
             );

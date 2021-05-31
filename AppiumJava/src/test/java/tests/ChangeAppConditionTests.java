@@ -5,6 +5,7 @@ import lib.Platform;
 import lib.UI.ArticlePageObject;
 import lib.UI.SearchPageObject;
 import lib.UI.factories.SearchPageObjectFactory;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.Duration;
@@ -31,7 +32,7 @@ public class ChangeAppConditionTests extends CoreTestCase
         this.rotateScreenLandscape();
         String title_after_rotation = ArticlePageObject.getArticleTitle();
 
-        assertEquals(
+        Assert.assertEquals(
                 "Article title have been changed after screen rotation",
                 title_before_rotation,
                 title_after_rotation
@@ -40,7 +41,7 @@ public class ChangeAppConditionTests extends CoreTestCase
         this.rotateScreenPortrait();
         String title_after_second_rotation = ArticlePageObject.getArticleTitle();
 
-        assertEquals(
+        Assert.assertEquals(
                 "Article title have been changed after screen rotation",
                 title_before_rotation,
                 title_after_second_rotation

@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: tests.iOS.GetStartedTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in tests.iOS.GetStartedTest
+testPassThroughWelcome(tests.iOS.GetStartedTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testPassThroughWelcome(tests.iOS.GetStartedTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+

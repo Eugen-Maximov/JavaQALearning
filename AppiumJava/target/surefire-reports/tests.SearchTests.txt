@@ -1,0 +1,46 @@
+-------------------------------------------------------------------------------
+Test set: tests.SearchTests
+-------------------------------------------------------------------------------
+Tests run: 14, Failures: 0, Errors: 14, Skipped: 0, Time elapsed: 1.008 s <<< FAILURE! - in tests.SearchTests
+testAmountOfNotEmptySearch(tests.SearchTests)  Time elapsed: 0.6 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: android 
+
+testAmountOfNotEmptySearch(tests.SearchTests)  Time elapsed: 0.6 s  <<< ERROR!
+java.lang.NullPointerException
+
+testAmountOfEmptySearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: android 
+
+testAmountOfEmptySearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testCancelSearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: android 
+
+testCancelSearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testSearchResultsAndClear(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: android 
+
+testSearchResultsAndClear(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testSearchResults(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: android 
+
+testSearchResults(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testForElementHasText(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: android 
+
+testForElementHasText(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testSearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: android 
+
+testSearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+

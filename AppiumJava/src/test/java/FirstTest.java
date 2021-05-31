@@ -8,16 +8,12 @@ import org.openqa.selenium.WebElement;
 public class FirstTest extends CoreTestCase {
 
     private MainPageObject MainPageObject;
-    protected void setUp() throws Exception
+    public void setUp() throws Exception
     {
         super.setUp();
 
         MainPageObject = new MainPageObject(driver);
     }
-
-
-
-
 
 
         @Test

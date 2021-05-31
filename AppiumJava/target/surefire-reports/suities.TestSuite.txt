@@ -1,0 +1,76 @@
+-------------------------------------------------------------------------------
+Test set: suities.TestSuite
+-------------------------------------------------------------------------------
+Tests run: 24, Failures: 0, Errors: 24, Skipped: 0, Time elapsed: 0.032 s <<< FAILURE! - in suities.TestSuite
+testFailAssertElementPresent(tests.ArticleTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testFailAssertElementPresent(tests.ArticleTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testCompareArticleTitle(tests.ArticleTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testCompareArticleTitle(tests.ArticleTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testSwipeArticle(tests.ArticleTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testSwipeArticle(tests.ArticleTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testAmountOfNotEmptySearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testAmountOfNotEmptySearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testAmountOfEmptySearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testAmountOfEmptySearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testCancelSearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testCancelSearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testSearchResultsAndClear(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testSearchResultsAndClear(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testSearchResults(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testSearchResults(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testForElementHasText(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testForElementHasText(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testSearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testSearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testChangeScreenOrientationOnSearchingResults(tests.ChangeAppConditionTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testChangeScreenOrientationOnSearchingResults(tests.ChangeAppConditionTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testCheckSearchArticleInBackground(tests.ChangeAppConditionTests)  Time elapsed: 0.016 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+
+testCheckSearchArticleInBackground(tests.ChangeAppConditionTests)  Time elapsed: 0.016 s  <<< ERROR!
+java.lang.NullPointerException
+
