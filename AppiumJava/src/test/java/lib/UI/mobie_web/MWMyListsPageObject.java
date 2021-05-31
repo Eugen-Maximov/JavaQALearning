@@ -13,5 +13,3 @@ public class MWMyListsPageObject extends MyListsPageObject {
         super(driver);
     }
 }
-
-}
