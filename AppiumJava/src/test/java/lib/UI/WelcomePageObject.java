@@ -1,7 +1,6 @@
 package lib.UI;
 
 import io.appium.java_client.AppiumDriver;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -20,32 +19,26 @@ public class WelcomePageObject extends MainPageObject{
         super(driver);
     }
 
-    @Step("Wait for Learn More Link")
     public void waitForLearnMoreLink(){
         this.waitForElementPresent(STEP_LEARN_MORE_LINK, "Cannot find Learn more page", 10);
     }
 
-    @Step("Wait For NewWayToExploreText")
     public void waitForNewWayToExploreText(){
         this.waitForElementPresent(STEP_NEW_WAYS_TO_EXPLORE_TEXT, "Cannot find New ways to explore page", 10);
     }
 
-    @Step("Wait for 3rd onboarding page")
     public void waitForAddOrEditPreferredLang(){
         this.waitForElementPresent(STEP_ADD_OR_EDIT_PREFERRED_LANG_LINK, "Cannot find Add or edit preferred languages page", 10);
     }
 
-    @Step("Wait for 4th onboarding page")
     public void waitForLearnMoreAboutDataCollected(){
         this.waitForElementPresent(STEP_LEARN_MORE_ABOUT_DATA_COLLECTED_LINK, "Cannot find Learn more about data collected page", 10);
     }
 
-    @Step("Click next btn to skip the onboarding page")
     public void clickNextButton(){
         this.waitForElementAndClick(NEXT_LINK, "Cannot find and click Next", 5);
     }
 
-    @Step("Click Get Started btn to close onboarding page")
     public void clickGetStartedButton(){
         this.waitForElementAndClick(GET_STARTED_BUTTON, "Cannot find and click Get Started", 5);
     }
