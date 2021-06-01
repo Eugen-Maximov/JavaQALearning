@@ -1,76 +1,103 @@
 -------------------------------------------------------------------------------
 Test set: suities.TestSuite
 -------------------------------------------------------------------------------
-Tests run: 24, Failures: 0, Errors: 24, Skipped: 0, Time elapsed: 0.032 s <<< FAILURE! - in suities.TestSuite
-testFailAssertElementPresent(tests.ArticleTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+Tests run: 15, Failures: 0, Errors: 9, Skipped: 0, Time elapsed: 489.74 s <<< FAILURE! - in suities.TestSuite
+testFailAssertElementPresent(tests.ArticleTests)  Time elapsed: 33.554 s  <<< ERROR!
+org.openqa.selenium.TimeoutException: 
+Expected condition failed: Cannot find and click search result with substringbject-oriented programming language
+ (tried for 10 second(s) with 500 milliseconds interval)
+	at tests.ArticleTests.testFailAssertElementPresent(ArticleTests.java:73)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Cannot locate an element using By.xpath: //*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='bject-oriented programming language']
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'NB_', ip: '192.168.96.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_281'
+Driver info: driver.version: unknown
+	at tests.ArticleTests.testFailAssertElementPresent(ArticleTests.java:73)
 
-testFailAssertElementPresent(tests.ArticleTests)  Time elapsed: 0 s  <<< ERROR!
+testCompareArticleTitle(tests.ArticleTests)  Time elapsed: 25.668 s  <<< ERROR!
+org.openqa.selenium.TimeoutException: 
+Expected condition failed: Cannot find and click search result with substringbject-oriented programming language
+ (tried for 10 second(s) with 500 milliseconds interval)
+	at tests.ArticleTests.testCompareArticleTitle(ArticleTests.java:27)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Cannot locate an element using By.xpath: //*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='bject-oriented programming language']
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'NB_', ip: '192.168.96.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_281'
+Driver info: driver.version: unknown
+	at tests.ArticleTests.testCompareArticleTitle(ArticleTests.java:27)
+
+testSwipeArticle(tests.ArticleTests)  Time elapsed: 21.229 s  <<< ERROR!
 java.lang.NullPointerException
+	at tests.ArticleTests.testSwipeArticle(ArticleTests.java:56)
 
-testCompareArticleTitle(tests.ArticleTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+testAmountOfNotEmptySearch(tests.SearchTests)  Time elapsed: 20.946 s  <<< ERROR!
+org.openqa.selenium.TimeoutException: 
+Expected condition failed: Cannot find and type into search input
+ (tried for 5 second(s) with 500 milliseconds interval)
+	at tests.SearchTests.testAmountOfNotEmptySearch(SearchTests.java:59)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Cannot locate an element using By.xpath: //*[contains(@text,'Search…')]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'NB_', ip: '192.168.96.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_281'
+Driver info: driver.version: unknown
+	at tests.SearchTests.testAmountOfNotEmptySearch(SearchTests.java:59)
 
-testCompareArticleTitle(tests.ArticleTests)  Time elapsed: 0 s  <<< ERROR!
+testAmountOfEmptySearch(tests.SearchTests)  Time elapsed: 18.695 s  <<< ERROR!
+org.openqa.selenium.TimeoutException: 
+Expected condition failed: Cannot find and type into search input
+ (tried for 5 second(s) with 500 milliseconds interval)
+	at tests.SearchTests.testAmountOfEmptySearch(SearchTests.java:78)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Cannot locate an element using By.xpath: //*[contains(@text,'Search…')]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'NB_', ip: '192.168.96.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_281'
+Driver info: driver.version: unknown
+	at tests.SearchTests.testAmountOfEmptySearch(SearchTests.java:78)
+
+testSearch(tests.SearchTests)  Time elapsed: 49.275 s  <<< ERROR!
+org.openqa.selenium.TimeoutException: 
+Expected condition failed: Cannot find and click search result with substringbject-oriented programming language
+ (tried for 10 second(s) with 500 milliseconds interval)
+	at tests.SearchTests.testSearch(SearchTests.java:29)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Cannot locate an element using By.xpath: //*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='bject-oriented programming language']
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'NB_', ip: '192.168.96.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_281'
+Driver info: driver.version: unknown
+	at tests.SearchTests.testSearch(SearchTests.java:29)
+
+testChangeScreenOrientationOnSearchingResults(tests.ChangeAppConditionTests)  Time elapsed: 41.81 s  <<< ERROR!
 java.lang.NullPointerException
+	at tests.ChangeAppConditionTests.testChangeScreenOrientationOnSearchingResults(ChangeAppConditionTests.java:39)
 
-testSwipeArticle(tests.ArticleTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
+testSaveTwoArticlesAndDeleteOne(tests.MyListsTests)  Time elapsed: 53.244 s  <<< ERROR!
+org.openqa.selenium.TimeoutException: 
+Expected condition failed: Cannot find and click search result with substringrogramming language
+ (tried for 10 second(s) with 500 milliseconds interval)
+	at tests.MyListsTests.testSaveTwoArticlesAndDeleteOne(MyListsTests.java:84)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Cannot locate an element using By.xpath: //*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='rogramming language']
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'NB_', ip: '192.168.96.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_281'
+Driver info: driver.version: unknown
+	at tests.MyListsTests.testSaveTwoArticlesAndDeleteOne(MyListsTests.java:84)
 
-testSwipeArticle(tests.ArticleTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-
-testAmountOfNotEmptySearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
-
-testAmountOfNotEmptySearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-
-testAmountOfEmptySearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
-
-testAmountOfEmptySearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-
-testCancelSearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
-
-testCancelSearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-
-testSearchResultsAndClear(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
-
-testSearchResultsAndClear(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-
-testSearchResults(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
-
-testSearchResults(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-
-testForElementHasText(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
-
-testForElementHasText(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-
-testSearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
-
-testSearch(tests.SearchTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-
-testChangeScreenOrientationOnSearchingResults(tests.ChangeAppConditionTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
-
-testChangeScreenOrientationOnSearchingResults(tests.ChangeAppConditionTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-
-testCheckSearchArticleInBackground(tests.ChangeAppConditionTests)  Time elapsed: 0.016 s  <<< ERROR!
-java.lang.Exception: Cannot detect type of the Driver. Platform value: mobile_web; mvn -Dtest#SearchTests test
-
-testCheckSearchArticleInBackground(tests.ChangeAppConditionTests)  Time elapsed: 0.016 s  <<< ERROR!
-java.lang.NullPointerException
+testSaveFirstArticleToMyList(tests.MyListsTests)  Time elapsed: 37.541 s  <<< ERROR!
+org.openqa.selenium.TimeoutException: 
+Expected condition failed: Cannot find and click search result with substringbject-oriented programming language
+ (tried for 10 second(s) with 500 milliseconds interval)
+	at tests.MyListsTests.testSaveFirstArticleToMyList(MyListsTests.java:30)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+Cannot locate an element using By.xpath: //*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='bject-oriented programming language']
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'NB_', ip: '192.168.96.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_281'
+Driver info: driver.version: unknown
+	at tests.MyListsTests.testSaveFirstArticleToMyList(MyListsTests.java:30)
 

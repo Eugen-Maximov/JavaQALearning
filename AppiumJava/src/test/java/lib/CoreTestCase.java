@@ -1,6 +1,7 @@
 package lib;
 
 import io.appium.java_client.AppiumDriver;
+import io.qameta.allure.Step;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -17,6 +18,7 @@ public class CoreTestCase {
 
 
     @Before
+    @Step("Starting driver and session")
     public void setUp() throws Exception
     {
         driver = Platform.getInstance().getDriver();
@@ -25,12 +27,14 @@ public class CoreTestCase {
     }
 
     @After
+    @Step("Remove driver and session")
     public void tearDown()
     {
         driver.quit();
     }
 
 
+    @Step("Rotate device to portrait")
     protected void rotateScreenPortrait()
     {
         if (driver instanceof AppiumDriver){
@@ -41,6 +45,7 @@ public class CoreTestCase {
         }
     }
 
+    @Step("Rotate device to landscape")
     protected void rotateScreenLandscape()
     {
         if (driver instanceof AppiumDriver){
@@ -51,6 +56,7 @@ public class CoreTestCase {
         }
     }
 
+    @Step("Send app to background for '{seconds}' seconds")
     protected void backgroundApp(int seconds)
     {
         if (driver instanceof AppiumDriver){
@@ -61,6 +67,7 @@ public class CoreTestCase {
         }
     }
 
+    @Step("Open wiki page")
     protected void openWikiWebPageForMobileWeb(){
         if (Platform.getInstance().isMW()){
             driver.get("https://en.m.wikipedia.org");

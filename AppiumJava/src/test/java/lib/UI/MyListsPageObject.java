@@ -1,6 +1,7 @@
 package lib.UI;
 
 import io.appium.java_client.AppiumDriver;
+import io.qameta.allure.Step;
 import lib.Platform;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -30,7 +31,7 @@ public class MyListsPageObject extends MainPageObject {
     }
     /* TEMPLATES METHODS */
 
-
+    @Step("Open folder by name: '{name_of_folder}'")
     public void openFolderByName(String name_of_folder) {
         String folder_name_xpath = getFolderByNameTpl(name_of_folder);
         this.waitForElementAndClick(
@@ -40,6 +41,7 @@ public class MyListsPageObject extends MainPageObject {
         );
     }
 
+    @Step("Swipe article to delete")
     public void swipeByArticleToDelete(String article_title)
     {
         this.waitArticleToAppearByTitle(article_title);
@@ -61,6 +63,7 @@ public class MyListsPageObject extends MainPageObject {
         this.waitArticleToDisappearByTitle(article_title);
     }
 
+    @Step("Wait article to disappear by title")
     public void waitArticleToDisappearByTitle(String article_title)
     {
         String article_title_xpath = getSavedArticleXpathByTPL(article_title);
@@ -71,6 +74,7 @@ public class MyListsPageObject extends MainPageObject {
                 );
     }
 
+    @Step("Wait article to appear by title")
     public void waitArticleToAppearByTitle(String article_title)
     {
         String article_title_xpath = getSavedArticleXpathByTPL(article_title);
@@ -81,6 +85,7 @@ public class MyListsPageObject extends MainPageObject {
         );
     }
 
+    @Step("Get saved article title")
     public String getSavedArticleTitle(String article_title)
     {
         String article_title_xpath = getSavedArticleXpathByTPL(article_title);
@@ -91,7 +96,7 @@ public class MyListsPageObject extends MainPageObject {
         ).getText();
     }
 
-
+    @Step("Open saver article by name: '{article_title}'")
     public void openSavedArticle(String article_title)
     {
         String article_title_xpath = getSavedArticleXpathByTPL(article_title);

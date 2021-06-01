@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.*;
+import io.qameta.allure.junit4.DisplayName;
 import lib.CoreTestCase;
 import lib.UI.SearchPageObject;
 import lib.UI.factories.SearchPageObjectFactory;
@@ -10,9 +12,15 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+@Epic("Search tests")
 public class SearchTests extends CoreTestCase
 {
     @Test
+    @Feature(value="Search")
+    @DisplayName("Search test")
+    @Description("Test wiki search")
+    @Step("Starting testSearch")
+    @Severity(value = SeverityLevel.CRITICAL)
     public void testSearch()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -22,6 +30,11 @@ public class SearchTests extends CoreTestCase
     }
 
     @Test
+    @Feature(value="Search")
+    @DisplayName("Cancel search test")
+    @Description("Test wiki search and cancel it")
+    @Step("Starting testCancelSearch")
+    @Severity(value = SeverityLevel.CRITICAL)
     public void testCancelSearch()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -34,6 +47,11 @@ public class SearchTests extends CoreTestCase
 
 
     @Test
+    @Feature(value="Search")
+    @DisplayName("Test some results by search")
+    @Description("Test wiki search that there is some search results")
+    @Step("Starting testAmountOfNotEmptySearch")
+    @Severity(value = SeverityLevel.CRITICAL)
     public void testAmountOfNotEmptySearch()
     {
         String search_line = "Linkin Park Discography";
@@ -48,6 +66,11 @@ public class SearchTests extends CoreTestCase
     }
 
     @Test
+    @Feature(value="Search")
+    @DisplayName("Test invalid search")
+    @Description("Test invalid search and nothing search result by it")
+    @Step("Starting testAmountOfEmptySearch")
+    @Severity(value = SeverityLevel.MINOR)
     public void testAmountOfEmptySearch()
     {
         String search_element = "aodkakdakdasd";
@@ -58,6 +81,11 @@ public class SearchTests extends CoreTestCase
     }
 
     @Test
+    @Feature(value="Search")
+    @DisplayName("Test init search input")
+    @Description("Check that search input has text")
+    @Step("Starting testForElementHasText")
+    @Severity(value = SeverityLevel.MINOR)
     public void testForElementHasText()
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -65,6 +93,11 @@ public class SearchTests extends CoreTestCase
     }
 
     @Test
+    @Feature(value="Search")
+    @DisplayName("Search results and clear them")
+    @Description("Search and clear results")
+    @Step("Starting testSearchResultsAndClear")
+    @Severity(value = SeverityLevel.MINOR)
     public void testSearchResultsAndClear()
     {
         String search_word = "Java";
@@ -77,6 +110,11 @@ public class SearchTests extends CoreTestCase
     }
 
     @Test
+    @Feature(value="Search")
+    @DisplayName("Find some search results")
+    @Description("Search and check for any result")
+    @Step("Starting testSearchResults")
+    @Severity(value = SeverityLevel.CRITICAL)
     public void testSearchResults()
     {
         String search_word = "Java";
